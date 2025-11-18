@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flux-demo
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flux-demo
+  template:
+    metadata:
+      labels:
+        app: flux-demo
+    spec:
+      containers:
+        - name: flux-demo
+          image: ghcr.io/stefanprodan/podinfo:6.5.4
+          ports:
+            - containerPort: 9898
